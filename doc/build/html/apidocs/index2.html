@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Register: &mdash; api_doc 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="api_doc 0.1.1 documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">api_doc 0.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="register">
+<h1>Register:<a class="headerlink" href="#register" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>The posts tagged with <cite>tag</cite> that the user (<cite>user_id</cite>) wrote.</div></blockquote>
+<div class="section" id="request">
+<h2>Request:<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The posts tagged with <cite>tag</cite> that the user (<cite>user_id</cite>) wrote.</p>
+<p><strong>Example request</strong>:
+<em>login</em></p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/users/123/posts/web</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">example.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json, text/javascript</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="response">
+<h2>Response:<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Vary</span><span class="o">:</span> <span class="l">Accept</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;post_id&quot;</span><span class="o">:</span> <span class="mi">12345</span><span class="p">,</span>
+    <span class="s2">&quot;author_id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;server&quot;</span><span class="p">,</span> <span class="s2">&quot;web&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;subject&quot;</span><span class="o">:</span> <span class="s2">&quot;I tried Nginx&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;post_id&quot;</span><span class="o">:</span> <span class="mi">12346</span><span class="p">,</span>
+    <span class="s2">&quot;author_id&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span> <span class="s2">&quot;standards&quot;</span><span class="p">,</span> <span class="s2">&quot;web&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;subject&quot;</span><span class="o">:</span> <span class="s2">&quot;We go to HTML 5&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">query sort:</th><td class="field-body">one of <code class="docutils literal"><span class="pre">hit</span></code>, <code class="docutils literal"><span class="pre">created-at</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name">query offset:</th><td class="field-body">offset number. default is 0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">query limit:</th><td class="field-body">limit number. default is 30</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">reqheader Accept:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">the response content type depends on
+<em class="mailheader">Accept</em> header</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">reqheader Authorization:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">optional OAuth token to authenticate</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">resheader Content-Type:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">this depends on <em class="mailheader">Accept</em>
+header of request</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 404:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="login">
+<h1>Login:<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Request:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2>Response:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="create-new-project">
+<h1>Create new project:<a class="headerlink" href="#create-new-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>Request:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>Response:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="get-projects">
+<h1>Get projects:<a class="headerlink" href="#get-projects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>Request:<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id6">
+<h2>Response:<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Register:</a><ul>
+<li><a class="reference internal" href="#request">Request:</a></li>
+<li><a class="reference internal" href="#response">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#login">Login:</a><ul>
+<li><a class="reference internal" href="#id1">Request:</a></li>
+<li><a class="reference internal" href="#id2">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-new-project">Create new project:</a><ul>
+<li><a class="reference internal" href="#id3">Request:</a></li>
+<li><a class="reference internal" href="#id4">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-projects">Get projects:</a><ul>
+<li><a class="reference internal" href="#id5">Request:</a></li>
+<li><a class="reference internal" href="#id6">Response:</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/apidocs/index2.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Nurjahan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.3</a>
+      
+      |
+      <a href="../_sources/apidocs/index2.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

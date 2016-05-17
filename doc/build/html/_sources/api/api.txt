@@ -1,0 +1,400 @@
+################
+API Introduction
+################
+# encoding: utf-8
+
+from __future__ import absolute_import
+
+import syringe
+import os
+import uuid
+import random
+import string
+import bcrypt
+import hashlib
+import functools
+import logging
+from bson import json_util
+from bson import ObjectId
+import datetime
+import json
+# from services import get_predection
+import tornado.escape
+import tornado.ioloop
+import tornado.web
+from tornado.web import Application
+from tornado import gen
+
+from src.data_handlers.csv_handler import CsvLoader
+from src.models import regressors
+from src.models.textBlob import TextBlob
+# Creating an app instance
+# app = Flask(__name__)
+
+#
+# @app.route('/predict', methods=['GET'])
+# def get():
+#     res = get_predection()
+#     while not res:
+#         sleep(5)
+#     json.dumps(str(res))
+# if __name__ == '__main__':
+#     app.run(debug=True,threaded=True,port = 3010)
+
+# var = get_predection()
+# for x in var:
+#     print(x.prediction)
+
+
+def custom_encoder(self, obj):
+    if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
+        return obj.isoformat()
+    elif isinstance(obj, ObjectId):
+        return str(obj)
+    else:
+        return str(obj)
+
+json.JSONEncoder.default = custom_encoder
+
+
+def authenticated_async(f):
+    @functools.wraps(f)
+    @gen.engine
+    def wrapper(self, *args, **kwargs):
+        self.current_user = self.get_current_user()
+        if self.current_user:
+            logging.info('User successfully authenticated')
+            f(self, *args, **kwargs)
+        else:
+            raise tornado.web.HTTPError(401, 'User not authenticated, '
+                                             'aborting')
+    return wrapper
+
+
+class BaseHandler(tornado.web.RequestHandler):
+    def __init__(self, application, request, **kwargs):
+        super(BaseHandler, self).__init__(application, request)
+
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", 'http://localhost:3000')
+        self.set_header("Access-Control-Allow-Credentials", "true")
+
+    def get_login_url(self):
+        return u"/login"
+
+    @authenticated_async
+    def get(self):
+        # print(self.settings['cookie_secret'])
+        if not self.current_user:
+            print('you are differnt user')
+        else:
+            print('current' + self.current_user)
+
+        self.render("upload.html")
+
+    def get_current_user(self):
+        user_json = self.get_secure_cookie("user")
+        if user_json:
+            return tornado.escape.json_decode(user_json)
+        else:
+            return None
+
+
+# class IndexHandler(BaseHandler):
+#     def get(self):
+#         print(self.settings['cookie_secret'])
+#         self.render("upload.html")
+
+
+class PredictHandler(BaseHandler):
+    reg_service = syringe.inject('regressor-service')
+    mongodb_service = syringe.inject('mongodb-service')
+
+    @authenticated_async
+    def get(self):
+        reg = self.request.headers.get('Regressors')
+        response = self.reg_service.train_model(reg.split(','))
+        print(response)
+        # print response
+        self.set_header('Content-Type', 'application/json')
+        self.set_header(
+            'Cache-Control',
+            'no-store, no-cache, must-revalidate, max-age=0'
+        )
+        print(self.request.headers.get('Regressors'))
+        self.write(tornado.escape.json_encode(response))
+        self.finish()
+
+    @authenticated_async
+    def post(self):
+        self.set_header('Content-Type', 'application/json')
+        # self.mongodb_service.load_project(
+        #     user=self.current_user,
+        #     project_id=project_id,
+        #     db=self.application.syncdb,
+        #     collection=collection
+        # )
+
+        reg = self.request.headers.get('Regressors')
+        response = self.reg_service.train_model(reg.split(','))
+        # print response
+        self.set_header('Content-Type', 'application/json')
+        self.set_header(
+            'Cache-Control',
+            'no-store, no-cache, must-revalidate, max-age=0'
+        )
+        self.write(tornado.escape.json_encode(response))
+        self.finish()
+
+
+class CsvDataHandler(BaseHandler):
+    csv_data_service = syringe.inject('csv-data-service')
+    __UPLOADS__ = 'uploads/'
+
+    # @gen.coroutine
+    @authenticated_async
+    def get(self):
+        response = self.csv_data_service.get_columns()
+        # print response
+        self.set_header('Content-Type', 'application/json')
+        self.set_header(
+            'Cache-Control',
+            'no-store, no-cache, must-revalidate, max-age=0'
+        )
+        # print(self.request.headers.get('test'))
+        self.write(tornado.escape.json_encode({'headers': response}))
+        self.finish()
+
+    @authenticated_async
+    def post(self):
+        file1 = self.request.files['file1'][0]
+        original_fname = file1['filename']
+        extension = os.path.splitext(original_fname)[1]
+        fname = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(6))
+        final_filename = fname + extension
+
+        output_file = open("uploads/" + final_filename, 'wb')
+        output_file.write(file1['body'])
+        output_file.close()
+        # we be removed later
+
+        self.csv_data_service.set_file(final_filename, self.application.syncdb)
+        self.finish("file" + final_filename + " is uploaded")
+
+
+class TextBlobHandler(BaseHandler):
+    cl_service = syringe.inject('classification-service')
+
+    @authenticated_async
+    def get(self):
+        self.cl_service.textblob_run('I am confussed')
+        self.set_header('Content-Type', 'application/json')
+        self.set_header(
+            'Cache-Control',
+            'no-store, no-cache, must-revalidate, max-age=0'
+        )
+        self.write('Done')
+        self.finish()
+
+
+class LoginHandler(BaseHandler):
+
+    def get(self):
+        self.render('login.html')
+
+    # @gen.coroutine
+    def post(self):
+        email = self.get_argument("email", "")
+        password = self.get_argument("password", "").encode('utf-8')
+        user = self.application.syncdb['users'].find_one({'email': email})
+        # Warning bcrypt will block IO loop:
+        if user and user['password_hash'] and bcrypt.hashpw(password, user['password_hash']) == user['password_hash']:
+            self.set_current_user(email)
+            print(email)
+        else:
+            self.set_secure_cookie('flash', "Login incorrect")
+            raise tornado.web.HTTPError(400, 'Loign Failed, '
+                                             'aborting')
+
+    def set_current_user(self, user):
+        print('setting ' + user)
+        if user:
+            print('Done')
+            self.write('you are logged In Now ')
+            self.set_secure_cookie("user", tornado.escape.json_encode(user), 10)
+        else:
+            self.clear_cookie("user")
+            self.write('you are Not Logged In')
+
+
+class RegisterHandler(LoginHandler):
+    mongodb_service = syringe.inject('mongodb-service')
+
+    def get(self):
+        self.render('register.html')
+
+    def post(self):
+        email = self.get_argument("email", "")
+
+        already_taken = self.application.syncdb['users'].find_one({'email': email})
+        if already_taken:
+            # error_msg = u"?error=" + tornado.escape.url_escape("Login name already taken")
+            # self.redirect(u"/login" + error_msg)
+            print('You exist dude')
+            return
+
+        # Warning bcrypt will block IO loop:
+        password = self.get_argument("password", "").encode('utf-8')
+
+        hashed_pass = bcrypt.hashpw(password, bcrypt.gensalt(8))
+
+        user = {}
+        user['user'] = email
+        user['password'] = hashed_pass
+        if self.mongodb_service.create_user(
+            email=email,
+            hashed_pass=hashed_pass,
+            db=self.application.syncdb
+        ):
+            # auth = self.application.syncdb['users'].save(user)
+            # This Method is in LoginHandler because we need the user to autmoatically
+            # Login after he registe. Incase the Mirabue needs to verfiy new users then
+            # Then we will have to alter this message.
+            self.set_current_user(email)
+        else:
+            raise tornado.web.HTTPError(400, 'Registration Failed, '
+                                             'aborting')
+        self.finish()
+
+
+class LogoutHandler(BaseHandler):
+    def get(self):
+        self.clear_cookie("user")
+        self.write('You are logged-Out Now')
+        self.redirect('/')
+        self.finish()
+
+
+class CreateProjectHandler(BaseHandler):
+    mongodb_service = syringe.inject('mongodb-service')
+
+    # @gen.coroutine
+    @authenticated_async
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def post(self):
+        self.set_header(
+            'Cache-Control',
+            'no-store, no-cache, must-revalidate, max-age=0'
+        )
+        project_name = self.get_argument("project_name", "")
+        self.mongodb_service.create_new_project(
+            user=self.current_user,
+            project_name=project_name,
+            db=self.application.syncdb
+        )
+        self.write('Done')
+        self.finish()
+
+
+class ProjectsHandler(BaseHandler):
+    """
+    Handler to return projects those belongs to current user.
+    """
+    mongodb_service = syringe.inject('mongodb-service')
+
+    @authenticated_async
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def get(self):
+        self.set_header('Content-Type', 'application/json')
+        projects = self.mongodb_service.get_projects(
+            user=self.current_user,
+            db=self.application.syncdb
+        )
+        self.write(json.dumps([p for p in projects]))
+        self.finish()
+
+
+class ProjectHandler(ProjectsHandler):
+    """
+    Handler to return project that matches the project id.
+    """
+    mongodb_service = syringe.inject('mongodb-service')
+
+    @authenticated_async
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def get(self, p_id):
+        self.set_header('Content-Type', 'application/json')
+        projects = self.mongodb_service.get_projects_by_id(
+            user=self.current_user,
+            project_id=p_id,
+            db=self.application.syncdb
+        )
+        self.write(json.dumps([p for p in projects]))
+        self.finish()
+
+    @authenticated_async
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def delete(self, p_id):
+        print('Deleteing in progress..')
+        self.set_header('Content-Type', 'application/json')
+        self.mongodb_service.delete_project(
+            user=self.current_user,
+            project_id=p_id,
+            db=self.application.syncdb
+        )
+        self.finish('DELETING DONE!')
+
+
+class UploadDataHandler(BaseHandler):
+    mongodb_service = syringe.inject('mongodb-service')
+
+    def get(self, p_id):
+        self.set_header('Content-Type', 'application/json')
+        projects = self.mongodb_service.get_projects_by_id(
+            user=self.current_user,
+            project_id=p_id,
+            db=self.application.syncdb
+        )
+        self.write(json.dumps([p for p in projects]))
+        self.finish()
+
+    @authenticated_async
+    def post(self, project_id):
+        file1 = self.request.files['file1'][0]
+        self.mongodb_service.store_data_set(
+            user=self.current_user,
+            project_id=project_id,
+            db=self.application.syncdb,
+            file_name=file1['filename'],
+            data=file1['body'].decode("utf-8")
+        )
+        self.finish("file  is uploaded")
+
+
+class LoadCurrentProjectHandler(BaseHandler):
+    mongodb_service = syringe.inject('mongodb-service')
+
+    # def get(self, p_id):
+    #     self.set_header('Content-Type', 'application/json')
+    #     projects = self.mongodb_service.get_projects_by_id(
+    #         user=self.current_user,
+    #         project_id=p_id,
+    #         db=self.application.syncdb
+    #     )
+    #     self.write(json.dumps([p for p in projects]))
+    #     self.finish()
+
+    @authenticated_async
+    def post(self, project_id, collection):
+        self.set_header('Content-Type', 'application/json')
+        self.mongodb_service.load_project(
+            user=self.current_user,
+            project_id=project_id,
+            db=self.application.syncdb,
+            collection=collection
+        )
+        self.finish("Done")

@@ -1,0 +1,17 @@
+############
+Introduction
+############
+src package
+===========
+
+Submodules
+----------
+
+src.api module
+--------------
+
+.. automodule:: src.api
+    :members:
+    :undoc-members:
+    :show-inheritance:
+

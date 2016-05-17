@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Main Page &mdash; api_doc 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="api_doc 0.1.1 documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">api_doc 0.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="main-page">
+<h1>Main Page<a class="headerlink" href="#main-page" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="src-package">
+<h2>src package<a class="headerlink" href="#src-package" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="submodules">
+<h3>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="module-src.api">
+<span id="src-api-module"></span><h3>src.api module<a class="headerlink" href="#module-src.api" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="src.api.BaseHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">BaseHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.BaseHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tornado.web.RequestHandler</span></code></p>
+<dl class="method">
+<dt id="src.api.BaseHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.BaseHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.BaseHandler.get_current_user">
+<code class="descname">get_current_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.BaseHandler.get_current_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.BaseHandler.get_login_url">
+<code class="descname">get_login_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.BaseHandler.get_login_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.BaseHandler.set_default_headers">
+<code class="descname">set_default_headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.BaseHandler.set_default_headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.CreateProjectHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">CreateProjectHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.CreateProjectHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="attribute">
+<dt id="src.api.CreateProjectHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.CreateProjectHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.CreateProjectHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.CreateProjectHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.CsvDataHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">CsvDataHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.CsvDataHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="attribute">
+<dt id="src.api.CsvDataHandler.csv_data_service">
+<code class="descname">csv_data_service</code><a class="headerlink" href="#src.api.CsvDataHandler.csv_data_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.CsvDataHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.CsvDataHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.CsvDataHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.CsvDataHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.LoadCurrentProjectHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">LoadCurrentProjectHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LoadCurrentProjectHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="attribute">
+<dt id="src.api.LoadCurrentProjectHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.LoadCurrentProjectHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.LoadCurrentProjectHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><em>project_id</em>, <em>collection</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LoadCurrentProjectHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.LoginHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">LoginHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LoginHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="method">
+<dt id="src.api.LoginHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LoginHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.LoginHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LoginHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.LoginHandler.set_current_user">
+<code class="descname">set_current_user</code><span class="sig-paren">(</span><em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LoginHandler.set_current_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.LogoutHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">LogoutHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LogoutHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="method">
+<dt id="src.api.LogoutHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.LogoutHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.PredictHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">PredictHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.PredictHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="method">
+<dt id="src.api.PredictHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.PredictHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="src.api.PredictHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.PredictHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.PredictHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.PredictHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="src.api.PredictHandler.reg_service">
+<code class="descname">reg_service</code><a class="headerlink" href="#src.api.PredictHandler.reg_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.ProjectHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">ProjectHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.ProjectHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.ProjectsHandler" title="src.api.ProjectsHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.ProjectsHandler</span></code></a></p>
+<p>Handler to return project that matches the project id.</p>
+<dl class="method">
+<dt id="src.api.ProjectHandler.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>p_id</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.ProjectHandler.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.api.ProjectHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>p_id</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.ProjectHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="src.api.ProjectHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.ProjectHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.ProjectsHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">ProjectsHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.ProjectsHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<p>Handler to return projects those belongs to current user.</p>
+<dl class="method">
+<dt id="src.api.ProjectsHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.ProjectsHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="src.api.ProjectsHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.ProjectsHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.RegisterHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">RegisterHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.RegisterHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.LoginHandler" title="src.api.LoginHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.LoginHandler</span></code></a></p>
+<dl class="method">
+<dt id="src.api.RegisterHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.RegisterHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="src.api.RegisterHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.RegisterHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.RegisterHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.RegisterHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.TextBlobHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">TextBlobHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.TextBlobHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="attribute">
+<dt id="src.api.TextBlobHandler.cl_service">
+<code class="descname">cl_service</code><a class="headerlink" href="#src.api.TextBlobHandler.cl_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.TextBlobHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.api.TextBlobHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.api.UploadDataHandler">
+<em class="property">class </em><code class="descclassname">src.api.</code><code class="descname">UploadDataHandler</code><span class="sig-paren">(</span><em>application</em>, <em>request</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.UploadDataHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../main/main2.html#src.api.BaseHandler" title="src.api.BaseHandler"><code class="xref py py-class docutils literal"><span class="pre">src.api.BaseHandler</span></code></a></p>
+<dl class="method">
+<dt id="src.api.UploadDataHandler.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>p_id</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.UploadDataHandler.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="src.api.UploadDataHandler.mongodb_service">
+<code class="descname">mongodb_service</code><a class="headerlink" href="#src.api.UploadDataHandler.mongodb_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Injects the instance of a provided class to the current context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.api.UploadDataHandler.post">
+<code class="descname">post</code><span class="sig-paren">(</span><em>project_id</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.UploadDataHandler.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="src.api.authenticated_async">
+<code class="descclassname">src.api.</code><code class="descname">authenticated_async</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.authenticated_async" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.api.custom_encoder">
+<code class="descclassname">src.api.</code><code class="descname">custom_encoder</code><span class="sig-paren">(</span><em>self</em>, <em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#src.api.custom_encoder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>from __future__ import absolute_import</p>
+<p>import socket
+import base64
+import uuid
+# import M2Crypto
+import tornado
+from tornado import httpserver, netutil
+import tornado.wsgi
+import wsgiref.simple_server
+from tornado.web import url
+from tornado.options import define
+from tornado.options import options
+from pymongo import MongoClient</p>
+<p>from src.data_handlers.csv_handler import CsvLoader
+from src.data_handlers.mongodb_handler import MongoDbHandler
+from src.models import regressors
+from src import services
+from src.models.regressors import Response
+from src.models.textBlob import TextBlob
+from src import api</p>
+<p>define(&#8216;port&#8217;, default=8901, type=int)</p>
+<p>_ip = socket.gethostbyname(socket.gethostname())
+if _ip.startswith(&#8220;127.&#8221;):</p>
+<blockquote>
+<div>s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect((&#8216;8.8.8.8&#8217;, 0))  # address doesn&#8217;t send packets
+_ip = s.getsockname()[0]</div></blockquote>
+<p>define(&#8216;address&#8217;, _ip)</p>
+<p># MONGO_SERVER = &#8216;192.168.1.68&#8217;
+MONGO_SERVER = &#8216;localhost&#8217;</p>
+<dl class="docutils">
+<dt>def init_csvloader():</dt>
+<dd><p class="first">&#8220;&#8221;&#8221;
+Initialise csv data module.</p>
+<p class="last">&#8220;&#8221;&#8221;
+CsvLoader()
+MongoDbHandler()</p>
+</dd>
+<dt>def init_regressors():</dt>
+<dd><p class="first">&#8220;&#8221;&#8221;
+Initialise the ml modules.</p>
+<p class="last">&#8220;&#8221;&#8221;
+regressors.LinearReg()
+regressors.SvmLinearReg()
+regressors.DecsionTreeReg()
+regressors.RandomForestReg()</p>
+</dd>
+<dt>def init_services():</dt>
+<dd><p class="first">&#8220;&#8221;&#8221;
+Initialise the services used by the core framework.</p>
+<p class="last">&#8220;&#8221;&#8221;
+services.RegService()
+services.CsvDataService()
+services.ContextAwarenesservices()
+services.MongoDbService()</p>
+</dd>
+<dt>def init_response():</dt>
+<dd><p class="first">&#8220;&#8221;&#8221;
+Initialise the services used by the core framework.</p>
+<p class="last">&#8220;&#8221;&#8221;
+Response()</p>
+</dd>
+<dt>def init_textblob():</dt>
+<dd>TextBlob()</dd>
+</dl>
+<p># application = tornado.web.Application([
+#     (r&#8221;/&#8221;, api.IndexHandler),
+#     (r&#8221;/prediction&#8221;, api.PredictHandler),
+#     (r&#8221;/columns&#8221;, api.CsvDataHandler)
+# ])</p>
+<dl class="docutils">
+<dt>class Application(tornado.wsgi.WSGIApplication):</dt>
+<dd><dl class="first last docutils">
+<dt>def __init__(self, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwars):</dt>
+<dd><dl class="first docutils">
+<dt>handlers = [</dt>
+<dd>url(r&#8221;/&#8221;, api.BaseHandler),
+url(r&#8221;/predict&#8221;, api.PredictHandler),
+url(r&#8221;/upload&#8221;, api.CsvDataHandler),  # depricated
+url(r&#8221;/context&#8221;, api.TextBlobHandler),
+url(r&#8221;/login&#8221;, api.LoginHandler),
+url(r&#8221;/register&#8221;, api.RegisterHandler),
+url(r&#8221;/logout&#8221;, api.LogoutHandler),
+url(r&#8221;/create_new_project&#8221;, api.CreateProjectHandler),
+url(r&#8221;/get_projects&#8221;, api.ProjectsHandler),
+url(r&#8221;/get_project/([w]+)&#8221;, api.ProjectHandler),
+url(r&#8221;/upload_data/([w]+)&#8221;, api.UploadDataHandler),
+url(r&#8221;/load-project/([w]+)/([w]+)&#8221;, api.LoadCurrentProjectHandler)</dd>
+</dl>
+<p>]</p>
+<dl class="docutils">
+<dt>settings = {</dt>
+<dd>&#8216;cookie_secret&#8217;: self.gen_uniq_id(),
+&#8216;debug&#8217;: True,
+&#8216;autoreload&#8217;: True</dd>
+</dl>
+<p>}</p>
+<p># tornado.web.Application.__init__(self, handlers, <a href="#id3"><span class="problematic" id="id4">**</span></a>settings)
+tornado.wsgi.WSGIApplication.__init__(self, handlers, <a href="#id5"><span class="problematic" id="id6">**</span></a>settings)
+self.syncconnection = MongoClient(MONGO_SERVER, 27017)</p>
+<dl class="last docutils">
+<dt>if &#8216;db&#8217; in kwars:</dt>
+<dd>self.syncdb = self.syncconnection[kwars[&#8216;db&#8217;]]</dd>
+<dt>else:</dt>
+<dd>self.syncdb = self.syncconnection[&#8216;flpke-db&#8217;]</dd>
+</dl>
+</dd>
+<dt>def gen_uniq_id(self, num_bytes=16):</dt>
+<dd># will use this later.
+# return base64.b64encode(M2Crypto.m2.rand_bytes(num_bytes))
+return base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes)</dd>
+</dl>
+</dd>
+<dt>if __name__ == &#8220;__main__&#8221;:</dt>
+<dd># import socket
+# print(socket.gethostbyname(socket.getfqdn()))
+# app.listen(options.port, options.address)
+# sockets = netutil.bind_sockets(8888)
+# # for s in sockets:
+# #     print(s)
+tornado.options.parse_command_line()
+sockets = tornado.netutil.bind_sockets(options.port, address=options.address)
+# tornado.process.fork_processes(0)
+init_csvloader()
+init_regressors()
+init_services()
+init_response()
+init_textblob()
+server = httpserver.HTTPServer(Application())
+server.add_sockets(sockets)
+# server.add_sockets(sockets)
+# init_csvloader()
+# init_regressors()
+# init_services()
+# init_response()
+# init_textblob()
+# tornado.ioloop.IOLoop.instance().start()
+# app.listen(8888)
+# tornado.ioloop.IOLoop.instance().start()
+# server = wsgiref.simple_server.make_server(&#8216;&#8217;, 8888, app)
+# init_csvloader()
+# init_regressors()
+# init_services()
+# init_response()
+# init_textblob()
+# server.serve_forever()
+print(&#8216;Web server is listing at :&#8217; + options.address + &#8216;:&#8217; + str(options.port))
+tornado.ioloop.IOLoop.instance().start()</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Main Page</a><ul>
+<li><a class="reference internal" href="#src-package">src package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.api">src.api module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/apidocs/main.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Nurjahan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.3</a>
+      
+      |
+      <a href="../_sources/apidocs/main.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

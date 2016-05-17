@@ -1,0 +1,179 @@
+#########
+Main Page
+#########
+src package
+===========
+
+Submodules
+----------
+
+src.api module
+--------------
+
+.. automodule:: src.api
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+
+from __future__ import absolute_import
+
+import socket
+import base64
+import uuid
+# import M2Crypto
+import tornado
+from tornado import httpserver, netutil
+import tornado.wsgi
+import wsgiref.simple_server
+from tornado.web import url
+from tornado.options import define
+from tornado.options import options
+from pymongo import MongoClient
+
+from src.data_handlers.csv_handler import CsvLoader
+from src.data_handlers.mongodb_handler import MongoDbHandler
+from src.models import regressors
+from src import services
+from src.models.regressors import Response
+from src.models.textBlob import TextBlob
+from src import api
+
+
+define('port', default=8901, type=int)
+
+_ip = socket.gethostbyname(socket.gethostname())
+if _ip.startswith("127."):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(('8.8.8.8', 0))  # address doesn't send packets
+    _ip = s.getsockname()[0]
+define('address', _ip)
+
+
+# MONGO_SERVER = '192.168.1.68'
+MONGO_SERVER = 'localhost'
+
+
+def init_csvloader():
+    """
+    Initialise csv data module.
+
+    """
+    CsvLoader()
+    MongoDbHandler()
+
+
+def init_regressors():
+    """
+    Initialise the ml modules.
+
+    """
+    regressors.LinearReg()
+    regressors.SvmLinearReg()
+    regressors.DecsionTreeReg()
+    regressors.RandomForestReg()
+
+
+def init_services():
+    """
+    Initialise the services used by the core framework.
+
+    """
+    services.RegService()
+    services.CsvDataService()
+    services.ContextAwarenesservices()
+    services.MongoDbService()
+
+
+def init_response():
+    """
+    Initialise the services used by the core framework.
+
+    """
+    Response()
+
+
+def init_textblob():
+    TextBlob()
+
+# application = tornado.web.Application([
+#     (r"/", api.IndexHandler),
+#     (r"/prediction", api.PredictHandler),
+#     (r"/columns", api.CsvDataHandler)
+# ])
+
+
+class Application(tornado.wsgi.WSGIApplication):
+    def __init__(self, **kwars):
+        handlers = [
+            url(r"/", api.BaseHandler),
+            url(r"/predict", api.PredictHandler),
+            url(r"/upload", api.CsvDataHandler),  # depricated
+            url(r"/context", api.TextBlobHandler),
+            url(r"/login", api.LoginHandler),
+            url(r"/register", api.RegisterHandler),
+            url(r"/logout", api.LogoutHandler),
+            url(r"/create_new_project", api.CreateProjectHandler),
+            url(r"/get_projects", api.ProjectsHandler),
+            url(r"/get_project/([\w]+)", api.ProjectHandler),
+            url(r"/upload_data/([\w]+)", api.UploadDataHandler),
+            url(r"/load-project/([\w]+)/([\w]+)", api.LoadCurrentProjectHandler)
+        ]
+
+        settings = {
+            'cookie_secret': self.gen_uniq_id(),
+            'debug': True,
+            'autoreload': True
+        }
+
+        # tornado.web.Application.__init__(self, handlers, **settings)
+        tornado.wsgi.WSGIApplication.__init__(self, handlers, **settings)
+        self.syncconnection = MongoClient(MONGO_SERVER, 27017)
+
+        if 'db' in kwars:
+            self.syncdb = self.syncconnection[kwars['db']]
+        else:
+            self.syncdb = self.syncconnection['flpke-db']
+
+    def gen_uniq_id(self, num_bytes=16):
+        # will use this later.
+        # return base64.b64encode(M2Crypto.m2.rand_bytes(num_bytes))
+        return base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes)
+
+
+if __name__ == "__main__":
+    # import socket
+    # print(socket.gethostbyname(socket.getfqdn()))
+    # app.listen(options.port, options.address)
+    # sockets = netutil.bind_sockets(8888)
+    # # for s in sockets:
+    # #     print(s)
+    tornado.options.parse_command_line()
+    sockets = tornado.netutil.bind_sockets(options.port, address=options.address)
+    # tornado.process.fork_processes(0)
+    init_csvloader()
+    init_regressors()
+    init_services()
+    init_response()
+    init_textblob()
+    server = httpserver.HTTPServer(Application())
+    server.add_sockets(sockets)
+    # server.add_sockets(sockets)
+    # init_csvloader()
+    # init_regressors()
+    # init_services()
+    # init_response()
+    # init_textblob()
+    # tornado.ioloop.IOLoop.instance().start()
+    # app.listen(8888)
+    # tornado.ioloop.IOLoop.instance().start()
+    # server = wsgiref.simple_server.make_server('', 8888, app)
+    # init_csvloader()
+    # init_regressors()
+    # init_services()
+    # init_response()
+    # init_textblob()
+    # server.serve_forever()
+    print('Web server is listing at :' + options.address + ':' + str(options.port))
+    tornado.ioloop.IOLoop.instance().start()

@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Register: &mdash; api_doc 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="api_doc 0.1.1 documentation" href="../index.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="register">
+<h1>Register:<a class="headerlink" href="#register" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="request">
+<h2>Request:<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:
+<em>register</em></p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: POST apiurl/register  HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="response">
+<h2>Response:<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">form email:</th><td class="field-body">user email address</td>
+</tr>
+<tr class="field-even field"><th class="field-name">form password:</th><td class="field-body">password</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 404:</th><td class="field-body">there&#8217;s no registration</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="login">
+<h1>Login:<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Request:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:
+<em>login</em></p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: POST apiurl/login  HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>Response:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">form email:</th><td class="field-body">user email address</td>
+</tr>
+<tr class="field-even field"><th class="field-name">form password:</th><td class="field-body">password</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 304:</th><td class="field-body">login with email address</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 404:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="create-new-project">
+<h1>Create new project:<a class="headerlink" href="#create-new-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>Request:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:
+<em>Create new project</em></p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: POST apiurl/create_new_project HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>Response:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+{
+  &quot;project_creation_date&quot;: &quot;2016-01-24T21:59:14.294756&quot;,
+  &quot;project_name&quot;: &quot;new project&quot;,
+  &quot;user_id&quot;: &quot;568eb497a226653a2bcaef25&quot;,
+  &quot;project_id&quot;: &quot;56a53b22a22665465dc11106&quot;
+}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">form project_name:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">new project</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 304:</th><td class="field-body">login with email address</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 404:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="get-projects">
+<h1>Get projects:<a class="headerlink" href="#get-projects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>Request:<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:
+<a href="#id6"><span class="problematic" id="id7">**</span></a>Get all projects belongs to current user*</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: GET apiurl/get_projects HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>Response:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+[
+   {
+       &quot;project_name&quot;: &quot;Project_1&quot;,
+       &quot;project_creation_date&quot;: &quot;2016-01-13T08:21:44.114000&quot;,
+       &quot;project_id&quot;: &quot;5695fb082a45ab5ed0c3bc83&quot;,
+       &quot;user_id&quot;: &quot;5695f5662a45ab5ed0c3bb94&quot;
+   },
+   {
+       &quot;project_name&quot;: &quot;Project_12&quot;,
+       &quot;project_creation_date&quot;: &quot;2016-01-13T08:21:44.114000&quot;,
+       &quot;project_id&quot;: &quot;5695fb082a45ab5ed0c3bc83&quot;,
+       &quot;user_id&quot;: &quot;5695f5662a45ab5ed0c3bb94&quot;
+   }
+]
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="get-project">
+<h1>Get project:<a class="headerlink" href="#get-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id9">
+<h2>Request:<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:
+<em>Get project by its ID</em></p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: GET apiurl/get_project/projectId HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>Response:<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>HTTP/1.1 200 OK
+{
+   &quot;project_name&quot;: &quot;Project_1&quot;,
+   &quot;project_creation_date&quot;: &quot;2016-01-13T08:21:44.114000&quot;,
+   &quot;project_id&quot;: &quot;5695fb082a45ab5ed0c3bc83&quot;,
+   &quot;user_id&quot;: &quot;5695f5662a45ab5ed0c3bb94&quot;
+}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="upload-data-set">
+<h1>Upload data set:<a class="headerlink" href="#upload-data-set" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id11">
+<h2>Request:<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: POST apiurl/upload_data/projectID HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h2>Response:<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>HTTP/1.1 200 OK
+{
+   &quot;data_set_id&quot;: &quot;56a5412ea2266546a5229988&quot;,
+   &quot;dataset_columns&quot;: [
+      &quot;column name 1&quot;,
+      &quot;column name 2&quot;
+    ],
+   &quot;project_id&quot;: &quot;5695fb082a45ab5ed0c3bc83&quot;,
+   &quot;user_id&quot;: &quot;5695f5662a45ab5ed0c3bb94&quot;,
+   &quot;dataset_id&quot;: &quot;&quot;568eb497a226653a2bcaef255698cf86a226656534c6119ba&quot;,
+   &quot;project_id&quot;: [
+      &quot;5698cf86a226656534c6119b&quot;
+   ],
+   &quot;user_id&quot;: &quot;568eb497a226653a2bcaef25&quot;
+}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">query string body:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 401:</th><td class="field-body">unauthourised</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="delete-data-by-from-project">
+<h1>Delete data by from project:<a class="headerlink" href="#delete-data-by-from-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id13">
+<h2>Request:<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: GET apiurl/upload_data/projectID/datasetID HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h2>Response:<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">query string body:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 401:</th><td class="field-body">unauthourised</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="delete-dataset-from-databse">
+<h1>Delete dataset from databse:<a class="headerlink" href="#delete-dataset-from-databse" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id15">
+<h2>Request:<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: GET apiurl/upload_data/datasetID HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h2>Response:<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">query string body:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 401:</th><td class="field-body">unauthourised</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="retrieve-datasets-for-currennt-user">
+<h1>Retrieve datasets for currennt user:<a class="headerlink" href="#retrieve-datasets-for-currennt-user" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id17">
+<h2>Request:<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: GET apiurl/datasets HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id18">
+<h2>Response:<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>HTTP/1.1 200 OK
+[
+  {
+     &quot;data_set_id&quot;: &quot;56a5412ea2266546a5229988&quot;,
+     &quot;dataset_columns&quot;: [
+        &quot;column name 1&quot;,
+        &quot;column name 2&quot;
+      ],
+     &quot;project_id&quot;: &quot;5695fb082a45ab5ed0c3bc83&quot;,
+     &quot;user_id&quot;: &quot;5695f5662a45ab5ed0c3bb94&quot;,
+     &quot;dataset_id&quot;: &quot;&quot;568eb497a226653a2bcaef255698cf86a226656534c6119ba&quot;,
+     &quot;project_id&quot;: [
+        &quot;5698cf86a226656534c6119b&quot;
+     ],
+     &quot;user_id&quot;: &quot;568eb497a226653a2bcaef25&quot;
+  },
+  {
+   &quot;data_set_id&quot;: &quot;56a5412ea2266546a5229988&quot;,
+   &quot;dataset_columns&quot;: [
+      &quot;column name 1&quot;,
+      &quot;column name 2&quot;
+    ],
+   &quot;project_id&quot;: &quot;5695fb082a45ab5ed0c3bc83&quot;,
+   &quot;user_id&quot;: &quot;5695f5662a45ab5ed0c3bb94&quot;,
+   &quot;dataset_id&quot;: &quot;&quot;568eb497a226653a2bcaef255698cf86a226656534c6119ba&quot;,
+   &quot;project_id&quot;: [
+      &quot;5698cf86a226656534c6119b&quot;
+   ],
+   &quot;user_id&quot;: &quot;568eb497a226653a2bcaef25&quot;
+  }
+]
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">query string body:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 401:</th><td class="field-body">unauthourised</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="load-new-experiment">
+<h1>Load new experiment:<a class="headerlink" href="#load-new-experiment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id19">
+<h2>Request:<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: POST apiurl/load-project HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h2>Response:<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>HTTP/1.1 200 OK
+{
+  &#39;project_id&#39;: &#39;5698cf86a226656534c6119b&#39;,
+  &#39;algorithms&#39;: [
+    &#39;LinearRegression&#39;,
+    &#39;Random Forest Regression&#39;,
+    &#39;Decision Tree Regression&#39;,
+    &#39;Svm Linear Regression&#39;
+  ],
+  &#39;test_size&#39;: 11,
+  &#39;labels&#39;: [
+    {
+      &quot;lable&quot;:&quot;ORD_TOTALAMOUNTINC&quot;,
+      &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+    }
+  ],
+  &#39;features&#39;:
+    [
+      {
+        &quot;feature&quot;:&quot;Number_of_cus&quot;,
+        &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+      },
+      {
+        &quot;feature&quot;:&quot;Month&quot;,
+        &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+      },
+      {
+        &quot;feature&quot;:&quot;Paper_con_value&quot;,
+        &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+      }
+    ]
+}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">query string body:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><dl class="first docutils">
+<dt>{</dt>
+<dd><p class="first">&#8216;project_id&#8217;: &#8216;5698cf86a226656534c6119b&#8217;,
+&#8216;algorithms&#8217;: [</p>
+<blockquote>
+<div><p>&#8216;LinearRegression&#8217;,
+&#8216;Random Forest Regression&#8217;,
+&#8216;Decision Tree Regression&#8217;,
+&#8216;Svm Linear Regression&#8217;</p>
+</div></blockquote>
+<p>],
+&#8216;test_size&#8217;: 11,
+&#8216;labels&#8217;: [</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{</dt>
+<dd><p class="first last">&#8220;lable&#8221;:&#8221;ORD_TOTALAMOUNTINC&#8221;,
+&#8220;dataset&#8221;:&#8221;56a5412ea2266546a5229988&#8221;</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>],
+&#8216;features&#8217;:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>[</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd><p class="first last">&#8220;feature&#8221;:&#8221;Number_of_cus&#8221;,
+&#8220;dataset&#8221;:&#8221;56a5412ea2266546a5229988&#8221;</p>
+</dd>
+</dl>
+<p>},
+{</p>
+<blockquote>
+<div><p>&#8220;feature&#8221;:&#8221;Month&#8221;,
+&#8220;dataset&#8221;:&#8221;56a5412ea2266546a5229988&#8221;</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>&#8220;feature&#8221;:&#8221;Paper_con_value&#8221;,
+&#8220;dataset&#8221;:&#8221;56a5412ea2266546a5229988&#8221;</p>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>}</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 200:</th><td class="field-body"><p class="first">no error</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 405:</th><td class="field-body"><p class="first">there&#8217;s no user</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 401:</th><td class="field-body"><p class="first last">unauthourised</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="get-all-experiment">
+<h1>GET all  experiment:<a class="headerlink" href="#get-all-experiment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id21">
+<h2>Request:<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>Request URL: GET apiurl/experiments/projectID HTTP/1.1
+Host: apiurl
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id22">
+<h2>Response:<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>HTTP/1.1 200 OK
+[
+  {
+    &#39;creation_timestamp&#39;: &quot;2016-01-22T10:18:47.110000&quot;
+    &#39;project_id&#39;: &#39;5698cf86a226656534c6119b&#39;,
+    &#39;algorithms&#39;: [
+      &#39;LinearRegression&#39;,
+      &#39;Random Forest Regression&#39;,
+      &#39;Decision Tree Regression&#39;,
+      &#39;Svm Linear Regression&#39;
+    ],
+    &#39;test_size&#39;: 11,
+    &#39;labels&#39;: [
+      {
+        &quot;lable&quot;:&quot;ORD_TOTALAMOUNTINC&quot;,
+        &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+      }
+    ],
+    &#39;features&#39;:
+      [
+        {
+          &quot;feature&quot;:&quot;Number_of_cus&quot;,
+          &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+        },
+        {
+          &quot;feature&quot;:&quot;Month&quot;,
+          &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+        },
+        {
+          &quot;feature&quot;:&quot;Paper_con_value&quot;,
+          &quot;dataset&quot;:&quot;56a5412ea2266546a5229988&quot;
+        }
+      ]
+  }
+]
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">statuscode 200:</th><td class="field-body">no error</td>
+</tr>
+<tr class="field-even field"><th class="field-name">statuscode 405:</th><td class="field-body">there&#8217;s no user</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">statuscode 401:</th><td class="field-body">unauthourised</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Register:</a><ul>
+<li><a class="reference internal" href="#request">Request:</a></li>
+<li><a class="reference internal" href="#response">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#login">Login:</a><ul>
+<li><a class="reference internal" href="#id1">Request:</a></li>
+<li><a class="reference internal" href="#id2">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-new-project">Create new project:</a><ul>
+<li><a class="reference internal" href="#id3">Request:</a></li>
+<li><a class="reference internal" href="#id4">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-projects">Get projects:</a><ul>
+<li><a class="reference internal" href="#id5">Request:</a></li>
+<li><a class="reference internal" href="#id8">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-project">Get project:</a><ul>
+<li><a class="reference internal" href="#id9">Request:</a></li>
+<li><a class="reference internal" href="#id10">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#upload-data-set">Upload data set:</a><ul>
+<li><a class="reference internal" href="#id11">Request:</a></li>
+<li><a class="reference internal" href="#id12">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delete-data-by-from-project">Delete data by from project:</a><ul>
+<li><a class="reference internal" href="#id13">Request:</a></li>
+<li><a class="reference internal" href="#id14">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delete-dataset-from-databse">Delete dataset from databse:</a><ul>
+<li><a class="reference internal" href="#id15">Request:</a></li>
+<li><a class="reference internal" href="#id16">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieve-datasets-for-currennt-user">Retrieve datasets for currennt user:</a><ul>
+<li><a class="reference internal" href="#id17">Request:</a></li>
+<li><a class="reference internal" href="#id18">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#load-new-experiment">Load new experiment:</a><ul>
+<li><a class="reference internal" href="#id19">Request:</a></li>
+<li><a class="reference internal" href="#id20">Response:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#get-all-experiment">GET all  experiment:</a><ul>
+<li><a class="reference internal" href="#id21">Request:</a></li>
+<li><a class="reference internal" href="#id22">Response:</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/apidocs/apiclasses.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Tree.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/apidocs/apiclasses.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
