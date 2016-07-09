@@ -8,32 +8,30 @@ Upload dataset(csv) select features and labels, train your your model and then p
 Supported Algorithms
 ********************
 
-Algorithms = [{
-    'Type': 'Regression',
-    'Algos': [
-        'LinearRegression',
-        'Svm Linear Regression',
-        'Decision Tree Regression',
-        'Random Forest Regression'
-    ]}, {
-    'Type': 'Classifiers',
-    'Algos': [
-        'SGD Classifier',
-        'KNeighborsClassifier',
-        'Svm Classifier',
-        'Decision Tree Classifier',
-        'Random Forest Classifier',
-        'Ada Boost Classifier',
-        'Gaussian Nb Classifier',
-        'Linear Discriminant Analysis Classifier',
-        'Quadratic Discriminant Analysiscls Classifier'
-    ]
-    }, {
-        'Type': 'Sentiment-Analysis',
-        'Algos':[
-            'Sentiment-Analysis'
-        ]
-}]
+Regression
+----------
+
+LinearRegression
+Svm Linear Regression
+Decision Tree Regression
+Random Forest Regression
+
+
+Classifiers
+-----------
+
+SGD Classifier
+KNeighborsClassifier
+Svm Classifier
+Decision Tree Classifier
+Random Forest Classifier
+Ada Boost Classifier
+Gaussian Nb Classifier
+Linear Discriminant Analysis Classifier
+Quadratic Discriminant Analysiscls Classifier
+
+Sentiment-Analysis
+
 
 Environment setup
 =================
