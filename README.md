@@ -36,6 +36,11 @@ Database
 This project is using mongobd as databse. Install and run mongodb in order to run
 this project.y
 
+Database
+========
+Navigate to the root directory of the project and hit:
+    
+    $ python src/main.py
 
 Build Api documentaion
 ======================
