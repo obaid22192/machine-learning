@@ -10,17 +10,6 @@ Environment setup
 Following instruction are for those who want to use venv, if you running this project globally then skip the venv setup and install the required dependencies by using pip.
 
 
-Python2
-------
-
-It is highly recommended to run everything in an up-to-date virtualenv.
-The environment can be set up using::
-
-    $ virtualenv /tmp/<name>
-    $ source /tmp/<name>/bin/activate
-    $ pip install pip --upgrade
-
-
 Python3
 -------
 
