@@ -4,9 +4,10 @@ Backend-api
 
 Upload dataset(csv) select features and labels, train your your model and then predict.
 
-********************
+
 Supported Algorithms
-********************
+====================
+
 
 Regression
 ----------
