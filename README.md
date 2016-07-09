@@ -63,7 +63,7 @@ Next install this project using ``pip``::
 Database
 ========
 
-This project is using mongobd as databse. Install and run mongodb in order to run
+This project is using mongodb as databse. Install and run mongodb in order to run
 this project.y
 
 Run Program
