@@ -12,26 +12,26 @@ Supported Algorithms
 Regression
 ----------
 
-LinearRegression
-Svm Linear Regression
-Decision Tree Regression
-Random Forest Regression
+* LinearRegression
+* Svm Linear Regression
+* Decision Tree Regression
+* Random Forest Regression
 
 
 Classifiers
 -----------
 
-SGD Classifier
-KNeighborsClassifier
-Svm Classifier
-Decision Tree Classifier
-Random Forest Classifier
-Ada Boost Classifier
-Gaussian Nb Classifier
-Linear Discriminant Analysis Classifier
-Quadratic Discriminant Analysiscls Classifier
+* SGD Classifier
+* KNeighborsClassifier
+* Svm Classifier
+* Decision Tree Classifier
+* Random Forest Classifier
+* Ada Boost Classifier
+* Gaussian Nb Classifier
+* Linear Discriminant Analysis Classifier
+* Quadratic Discriminant Analysiscls Classifier
 
-Sentiment-Analysis
+* Sentiment-Analysis
 
 
 Environment setup
